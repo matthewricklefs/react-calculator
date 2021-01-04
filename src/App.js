@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as math from "mathjs";
 
 import Button from "./Button";
 import Input from "./Input";
@@ -8,7 +9,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      buttonInput: "",
+      input: "",
       ops: [
         ["7", "8", "9", "/"],
         ["4", "5", "6", "*"],
@@ -19,10 +20,16 @@ export default class App extends Component {
   }
 
   handleChange = (val) => {
-    const input = this.state.buttonInput;
+    const input = this.state.input;
 
     this.setState({
-      buttonInput: input + val
+      input: input + val
+    });
+  };
+
+  handleEqual = () => {
+    this.setState({
+      input: math.evaluate(this.state.input)
     });
   };
 
@@ -41,7 +48,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <Input input={this.state.buttonInput} />
+        <Input input={this.state.input} />
 
         {this.renderButtons()}
 
