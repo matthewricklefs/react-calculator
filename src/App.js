@@ -42,10 +42,16 @@ export default class App extends Component {
     return (
       <div className="app">
         <Input input={this.state.buttonInput} />
-        {/* Row of Buttons */}
+
         {this.renderButtons()}
 
-        {/* Clear and Equal Buttons*/}
+        <div className="row">
+          <Button handleClick={() => this.setState({ input: "" })}>
+            Clear
+          </Button>
+
+          <Button handleClick={this.handleEqual}>=</Button>
+        </div>
       </div>
     );
   }
