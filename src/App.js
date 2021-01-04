@@ -53,11 +53,16 @@ export default class App extends Component {
         {this.renderButtons()}
 
         <div className="row">
-          <Button handleClick={() => this.setState({ input: "" })}>
+          <Button
+            label="clear-btn"
+            handleClick={() => this.setState({ input: "" })}
+          >
             Clear
           </Button>
 
-          <Button handleClick={this.handleEqual}>=</Button>
+          <Button label="equal-btn" handleClick={this.handleEqual}>
+            =
+          </Button>
         </div>
       </div>
     );
